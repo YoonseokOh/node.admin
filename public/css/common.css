@@ -1,0 +1,199 @@
+body, document {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.top .options {
+    float: right;
+}
+
+.top .options .dt-buttons {
+    margin-right: 15px;
+}
+
+.icheckbox_flat-blue {
+    vertical-align: bottom;
+}
+
+.dataTables_filter {
+    width: auto;
+}
+
+.dataTables_paginate {
+    position: absolute;
+    right: 0;
+}
+
+.table>thead:first-child>tr:first-child>th,
+.table.table-bordered.dataTable tbody td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+}
+
+td button {
+    margin: 0 !important;
+}
+
+td label {
+    margin: 0 !important;
+}
+
+.daterangepicker.dropdown-menu {
+    z-index: 9999;
+}
+
+.modal-body .input-group[class*=col-] {
+    float: left;
+}
+
+.modal-body .form-inline .input-group-addon {
+    width: inherit !important;
+}
+
+.modal-footer .btn {
+    margin-bottom: 0;
+}
+
+.addon-checkbox {
+    position: initial !important;
+    display: block;
+    margin: 0 !important;
+}
+.btn-sample {
+    color: #ffffff;
+    background-color: #605B66;
+    border-color: #130269;
+}
+
+.btn-sample:hover,
+.btn-sample:focus,
+.btn-sample:active,
+.btn-sample.active,
+.open .dropdown-toggle.btn-sample {
+    color: #ffffff;
+    background-color: #605B66;
+    border-color: #130269;
+}
+
+.btn-sample:active,
+.btn-sample.active,
+.open .dropdown-toggle.btn-sample {
+    background-image: none;
+}
+
+.btn-sample.disabled,
+.btn-sample[disabled],
+fieldset[disabled] .btn-sample,
+.btn-sample.disabled:hover,
+.btn-sample[disabled]:hover,
+fieldset[disabled] .btn-sample:hover,
+.btn-sample.disabled:focus,
+.btn-sample[disabled]:focus,
+fieldset[disabled] .btn-sample:focus,
+.btn-sample.disabled:active,
+.btn-sample[disabled]:active,
+fieldset[disabled] .btn-sample:active,
+.btn-sample.disabled.active,
+.btn-sample[disabled].active,
+fieldset[disabled] .btn-sample.active {
+    background-color: #605B66;
+    border-color: #130269;
+}
+
+.btn-sample .badge {
+    color: #605B66;
+    background-color: #ffffff;
+}
+.list-group-horizontal {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+}
+.list-group-item-horizontal {
+    border: 1px solid grey;
+    display: table-cell;
+    float: none;
+    text-align: center;
+    width: 1%;
+    border-radius: 0;
+}
+.first-child {
+     border-bottom-left-radius: 3px;
+ }
+.last-child {
+     border-bottom-right-radius: 3px;
+ }
+
+/*Panel tabs - merchanCard */
+.panel-tabs {
+    position: relative;
+    bottom: 30px;
+    clear:both;
+    border-bottom: 1px solid transparent;
+}
+
+.panel-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+
+.panel-tabs > li > a {
+    margin-right: 2px;
+    margin-top: 4px;
+    line-height: .85;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    color: #ffffff;
+}
+
+.panel-tabs > li > a:hover {
+    border-color: transparent;
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.panel-tabs > li.active > a,
+.panel-tabs > li.active > a:hover,
+.panel-tabs > li.active > a:focus {
+    color: #fff;
+    cursor: default;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: rgba(255,255,255, .23);
+    border-bottom-color: transparent;
+}
+
+.card-content {
+    clear: both;
+}
+
+/*Panel-tabs end*/
+
+.form-horizontal .control-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+    margin-right: 0;
+    text-align: left;
+}
+
+/*업로드*/
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}

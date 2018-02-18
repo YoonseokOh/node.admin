@@ -1,0 +1,29 @@
+{
+  "name": "yoonseokoh.admin",
+  "version": "1.0.0",
+  "description": "yoonseok admin page node package",
+  "homepage": "admin.yoonseokoh.com",
+  "bugs": {
+    "email": "yoonseok.oh@icloud.com"
+  },
+  "main": "bin/www",
+  "author": "yoonseokoh",
+  "license": "ISC",
+  "script": {
+    "init": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
+    "config": "^1.26.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "express-minify": "^0.2.0",
+    "gentelella": "^1.4.0",
+    "hbs": "^4.0.1",
+    "lodash": "^4.17.5",
+    "moment": "^2.20.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {}
+}

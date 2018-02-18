@@ -1,0 +1,20 @@
+{
+  "cfg": {
+    // database information
+    "db": {
+      "connect": {
+        "connectionLimit": 1,
+        // DB setting
+        "host": "",
+        // DB IP
+        "port": 3306,
+        // DB port
+        "user": "user",
+        // DB ID
+        "password": "password"
+        // DB password
+      }
+    },
+    "env": "development"
+  }
+}

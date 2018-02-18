@@ -1,0 +1,15 @@
+{
+  "cfg": {
+    "service": {
+      "name": "test"
+    },
+    "port": {
+      "production": 7000,
+      "development": 8080
+    },
+    "mode": {
+      "login": true
+    },
+    "env": "production"
+  }
+}
