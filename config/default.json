@@ -1,11 +1,18 @@
 {
   "cfg": {
+    "auth": {
+      "cookie": "user"
+    },
     "service": {
-      "name": "test"
+      "name": "Yoon"
     },
     "port": {
       "production": 7000,
       "development": 8080
+    },
+    "debug": {
+      "route": true,
+      "hbs": false
     },
     "mode": {
       "login": true

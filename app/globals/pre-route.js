@@ -11,5 +11,10 @@
  */
 
 module.exports = function(express) {
-
+  if (cfg.env === 'development') {
+    express.use(function (req, res, next) {
+      console.log(decodeURI(req.originalUrl));
+      next();
+    });
+  }
 };

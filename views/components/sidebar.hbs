@@ -1,22 +1,26 @@
-<div class="col-md-3 left_col menu_fixed">
+{{!-- menu_fixed : sidebar 고정 --}}
+<div class="col-md-3 left_col">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
       <a href="/" class="site_title">
+        <img src="/icon/logo/logo.png" width="50"/>
         <span>{{service.name}} admin</span>
       </a>
     </div>
 
     <div class="clearfix"></div>
 
-    <br/>
-
     <!-- menu profile quick info -->
     {{> sidebar_profile}}
     <!-- /menu profile quick info -->
 
+    <br/>
+
     <!-- sidebar menu -->
     {{> sidebar_menu}}
     <!-- /sidebar menu -->
+
+    <br/>
 
     <!-- /menu footer buttons -->
     {{> sidebar_footer}}

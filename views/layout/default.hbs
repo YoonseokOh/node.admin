@@ -7,12 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="shortcut icon" href="/icon/logo/favicon.ico" type="image/x-icon"/>
+
   <title>{{service.name}} Admin</title>
 
   {{> head_stylesheet}}
 </head>
 
-<body class="nav-md footer_fixed">
+{{!-- footer_fixed : footer 고정 --}}
+<body class="nav-md">
 <div class="container body">
   <div class="main_container">
     <!-- sidebar -->
@@ -30,6 +33,7 @@
           <div class="title_left">
             <h3>{{{block "parent"}}}</h3>
           </div>
+          {{{block "search"}}}
         </div>
 
         <div class="clearfix"></div>
@@ -42,8 +46,7 @@
     <!-- footer content -->
     <footer>
       <div class="pull-right">
-        © Copyright 2018 Company, Inc. All rights reserved.<br>
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        © Copyright 2018 Company, Inc. All rights reserved. Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
       </div>
       <div class="clearfix"></div>
     </footer>
@@ -55,10 +58,7 @@
 {{{block "dialogs"}}}
 <!-- /modal dialogs -->
 
-{{!--> footer_scripts--}}
+{{> footer_scripts}}
 
-<!-- script -->
-{{{block "script"}}}
-<!-- /script -->
 </body>
 </html>

@@ -12,31 +12,51 @@
 
 "use strict";
 
+const _ = require('lodash');
 const express = require('express');
 const router = express.Router();
 
-// Test
+// Default
 router.get('/', (req, res) => {
-  res.render('index.hbs');
-});
-
-// Login
-router.get('/login', (req, res, next) => {
-  if (cfg.mode.login) {
-    res.render('login.hbs', {
-      layout: 'layout/simple'
-    });
-  } else {
-    next();
-  }
+  res.redirect('/home/index');
 });
 
 // Default
 router.get('/*', (req, res, next) => {
-  res.render(req._parsedUrl.path.substring(1), {
-    layout: 'layout/default',
-    service: cfg.service
+  const routeArray = req._parsedUrl.path.substring(1)? req._parsedUrl.path.substring(1).split('/') : [];
+
+  let routePath = _.cloneDeep(routesList);
+  let layout = false;
+  let path = '';
+  routeArray.forEach(item => {
+    if (!layout && item && routePath[item]) {
+      if (routePath[item]) {
+        path += path? `/${item}` : item;
+        if (_.isString(routePath[item])) {
+          layout = routePath[item];
+        } else {
+          routePath = routePath[item];
+        }
+      }
+    }
   });
+
+  if (cfg.debug.route) {
+    console.log('\n\n[route] routeArray / layout / origin path / path');
+    console.log(routeArray);
+    console.log(layout);
+    console.log(req._parsedUrl.path.substring(1));
+    console.log(path);
+  }
+
+  if (layout && path) {
+    res.render(path, {
+      layout: layout,
+      service: cfg.service
+    });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 module.exports = router;

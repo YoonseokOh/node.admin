@@ -621,18 +621,18 @@ if (typeof NProgress != 'undefined') {
 		if(typeof (jQuery.fn.vectorMap) === 'undefined'){ return; }
 		
 		console.log('init_JQVmap');
-	     
+
 			if ($('#world-map-gdp').length ){
 		 
 				$('#world-map-gdp').vectorMap({
-					map: 'world_en',
+					map: 'world_mill_en',
 					backgroundColor: null,
 					color: '#ffffff',
 					hoverOpacity: 0.7,
 					selectedColor: '#666666',
 					enableZoom: true,
 					showTooltip: true,
-					values: sample_data,
+					values: gdpData,
 					scaleColors: ['#E6F2F0', '#149B7E'],
 					normalizeFunction: 'polynomial'
 				});
@@ -640,7 +640,7 @@ if (typeof NProgress != 'undefined') {
 			}
 			
 			if ($('#usa_map').length ){
-			
+
 				$('#usa_map').vectorMap({
 					map: 'usa_en',
 					backgroundColor: null,
@@ -649,7 +649,7 @@ if (typeof NProgress != 'undefined') {
 					selectedColor: '#666666',
 					enableZoom: true,
 					showTooltip: true,
-					values: sample_data,
+					values: gdpData,
 					scaleColors: ['#E6F2F0', '#149B7E'],
 					normalizeFunction: 'polynomial'
 				});
@@ -766,9 +766,8 @@ if (typeof NProgress != 'undefined') {
 		
 			var chart_gauge_01_elem = document.getElementById('chart_gauge_01');
 			var chart_gauge_01 = new Gauge(chart_gauge_01_elem).setOptions(chart_gauge_settings);
-			
-		}	
-		
+		}
+
 		
 		if ($('#gauge-text').length){ 
 		
@@ -1991,13 +1990,8 @@ if (typeof NProgress != 'undefined') {
 				if( typeof (Chart) === 'undefined'){ return; }
 				
 				console.log('init_charts');
-			
-				
-				Chart.defaults.global.legend = {
-					enabled: false
-				};
-				
-				
+
+				Chart.defaults.global.legend.enabled = false;
 
 			if ($('#canvas_line').length ){
 				

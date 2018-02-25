@@ -17,17 +17,36 @@ const hbs = require('hbs');
 const blocks = {};
 
 hbs.registerPartials(__dirname + '/views/components');
+hbs.registerPartials(__dirname + '/views/components/module');
 
-hbs.registerHelper('extend', function(name, context) {
-  let block = blocks[name];
-  if (!block) {
-    block = blocks[name] = [];
+// HTML save
+hbs.registerHelper('extend', function(type, name, context) {
+  if (!blocks[type]) {
+    blocks[type] = {};
   }
-  block.push(context.fn(this));
+
+  const block = blocks[type];
+
+  if (!block.scriptArray) {
+    block.scriptArray = [];
+  }
+
+  if (!block[name]) {
+    block[name] = true;
+    block.scriptArray.push(context.fn(this));
+  } else {
+    if (cfg.debug.hbs) {
+      console.log('\n\n[HBS extend] unexpected');
+      console.log(type);
+      console.log(name);
+      console.log(context.fn(this));
+    }
+  }
 });
 
-hbs.registerHelper('block', function(name) {
-  const val = (blocks[name] || []).join('\n');
-  blocks[name] = [];
+// HTML insert
+hbs.registerHelper('block', function(type) {
+  const val = ((blocks[type] && blocks[type].scriptArray) || []).join('\n');
+  blocks[type] = {};
   return val;
 });

@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{service.name}} Admin</title>
+  <link rel="shortcut icon" href="/icon/logo/favicon.ico" type="image/x-icon"/>
 
-    {{> head_stylesheet}}
+  <title>{{service.name}} Admin</title>
+
+  {{> head_stylesheet}}
 </head>
 
+<body>
 {{{body}}}
+
+{{> footer_scripts}}
+</body>
+
 </html>

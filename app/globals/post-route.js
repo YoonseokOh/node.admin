@@ -13,5 +13,8 @@
 "use strict";
 
 module.exports = function(express) {
-
+  express.use(function(err, req, res, next) {
+    console.log('\n\n[POST-ROUTE] error');
+    console.log(err);
+  })
 };

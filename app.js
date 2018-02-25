@@ -27,8 +27,6 @@ const minify = require('express-minify');
 
 app.disable('x-powered-by');
 
-app.use(compression());
-app.use(minify());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -40,6 +38,11 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.set('trust proxy', 'loopback');
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
+
+if (cfg.env === 'production') {
+  app.use(compression());
+  app.use(minify());
+}
 
 // Set pre route
 require('./app/globals/pre-route')(app);
