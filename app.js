@@ -45,12 +45,12 @@ if (cfg.env === 'production') {
 }
 
 // Set pre route
-require('./app/globals/pre-route')(app);
+require('./routes/pre-route')(app);
 
 // Set routes
 app.use('/', require('./routes'));
 
 // Set post route
-require('./app/globals/post-route')(app);
+require('./routes/post-route')(app);
 
 module.exports = app;
