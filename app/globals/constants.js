@@ -28,7 +28,7 @@ global.routesList = {
     ecommerce: layoutType.default,
     profile: layoutType.default,
     projectDetail: layoutType.default,
-    project: layoutType.default
+    projects: layoutType.default
   },
   chart: {
     echarts: layoutType.default,

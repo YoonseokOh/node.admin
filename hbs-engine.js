@@ -32,6 +32,14 @@ hbs.registerHelper('extend', function(type, name, context) {
   }
 
   if (!block[name]) {
+    if (cfg.debug.scriptlibrary) {
+      if (type === 'scriptlibrary') {
+        console.log('\n\n[HBS extend] scriptlibrary');
+        console.log(type);
+        console.log(name);
+      }
+    }
+
     block[name] = true;
     block.scriptArray.push(context.fn(this));
   } else {

@@ -779,17 +779,16 @@
   <script>
     $(document).ready(function(){
       $('#world-map-gdp').vectorMap({
-        map: 'world_mill_en',
+        map: 'world_en',
         backgroundColor: 'transparent',
+        color: '#ffffff',
+        hoverOpacity: 0.7,
+        selectedColor: '#666666',
+        enableZoom: true,
+        showTooltip: true,
         zoomOnScroll: false,
-        series: {
-          regions: [{
-            values: gdpData,
-            scale: ['#E6F2F0', '#149B7E'],
-            normalizeFunction: 'polynomial'
-          }]
-        },
-        onRegionTipShow: function(e, el, code) {
+        values: gdpData,
+        onLabelShow: function(e, el, code) {
           el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
         }
       });

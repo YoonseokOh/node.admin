@@ -11,7 +11,7 @@
       "development": 8080
     },
     "debug": {
-      "route": true,
+      "route": false,
       "hbs": false
     },
     "mode": {
