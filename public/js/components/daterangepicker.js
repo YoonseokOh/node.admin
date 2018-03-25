@@ -12,88 +12,96 @@
 
 window.admin = window.admin || {};
 window.admin.daterangepicker = (function () {
+  var debug_daterangepicker = true;
+  var default_minDate = '05/01/2016';
+  var option = {
+    startDate: moment().subtract(29, 'days'),
+    endDate: moment(),
+    minDate: default_minDate,
+    maxDate: moment().add(1, 'years'),
+    dateLimit: {
+      days: 60
+    },
+    showDropdowns: true,
+    showWeekNumbers: true,
+    timePicker: false,
+    timePickerIncrement: 1,
+    timePicker12Hour: true,
+    ranges: {
+      '오늘': [moment(), moment()],
+      '어제': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      '지난 7일': [moment().subtract(6, 'days'), moment()],
+      '지난 30일': [moment().subtract(29, 'days'), moment()],
+      '이번달': [moment().startOf('month'), moment().endOf('month')],
+      '지난달': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    },
+    opens: 'left',
+    buttonClasses: ['btn btn-default'],
+    applyClass: 'btn-small btn-primary',
+    cancelClass: 'btn-small',
+    format: 'MM/DD/YYYY',
+    separator: ' to ',
+    locale: {
+      applyLabel: '설정',
+      cancelLabel: '취소',
+      fromLabel: '시작',
+      toLabel: '끝',
+      customRangeLabel: '사용자설정',
+      daysOfWeek: ['일', '월', '화', '수', '목', '금', '토'],
+      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+      firstDay: 1
+    }
+  }
+
   /* DATERANGEPICKER */
-  function init_daterangepicker() {
-    if (typeof ($.fn.daterangepicker) === 'undefined') {
+  function init_daterangepicker(elementId) {
+    if (typeof ($.fn.daterangepicker) === 'undefined' || !elementId) {
       return;
     }
 
-    console.log('init_daterangepicker');
+    if (debug_daterangepicker) {
+      console.log('init_daterangepicker');
+    }
+
+    elementSelecter = '#' + elementId;
 
     var cb = function(start, end, label) {
-      console.log(start.toISOString(), end.toISOString(), label);
-      $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-    };
-
-    var optionSet1 = {
-      startDate: moment().subtract(29, 'days'),
-      endDate: moment(),
-      minDate: '01/01/2012',
-      maxDate: '12/31/2015',
-      dateLimit: {
-        days: 60
-      },
-      showDropdowns: true,
-      showWeekNumbers: true,
-      timePicker: false,
-      timePickerIncrement: 1,
-      timePicker12Hour: true,
-      ranges: {
-        'Today': [moment(), moment()],
-        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        'This Month': [moment().startOf('month'), moment().endOf('month')],
-        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-      },
-      opens: 'left',
-      buttonClasses: ['btn btn-default'],
-      applyClass: 'btn-small btn-primary',
-      cancelClass: 'btn-small',
-      format: 'MM/DD/YYYY',
-      separator: ' to ',
-      locale: {
-        applyLabel: 'Submit',
-        cancelLabel: 'Clear',
-        fromLabel: 'From',
-        toLabel: 'To',
-        customRangeLabel: 'Custom',
-        daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-        monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        firstDay: 1
+      if (debug_daterangepicker) {
+        console.log(start.toISOString(), end.toISOString(), label);
       }
+      $(elementSelecter + ' span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
     };
 
-    $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+    $(elementSelecter + ' span').html(moment().subtract(29, 'days').format('YYYY-MM-DD') + ' - ' + moment().format('YYYY-MM-DD'));
 
-    $('#reportrange').daterangepicker(optionSet1, cb);
+    $(elementSelecter).daterangepicker(option, cb);
 
-    $('#reportrange').on('show.daterangepicker', function() {
-      console.log("show event fired");
-    });
-
-    $('#reportrange').on('hide.daterangepicker', function() {
-      console.log("hide event fired");
-    });
-
-    $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
-      console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
-    });
-
-    $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
-      console.log("cancel event fired");
-    });
-
-    $('#options1').click(function() {
-      $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
-    });
-
-    $('#options2').click(function() {
-      $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
-    });
+    // $(elementSelecter).on('show.daterangepicker', function() {
+    //   if (debug_daterangepicker) {
+    //     console.log("show event fired");
+    //   }
+    // });
+    //
+    // $(elementSelecter).on('hide.daterangepicker', function() {
+    //   if (debug_daterangepicker) {
+    //     console.log("hide event fired");
+    //   }
+    // });
+    //
+    // $(elementSelecter).on('apply.daterangepicker', function(ev, picker) {
+    //   if (debug_daterangepicker) {
+    //     console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
+    //   }
+    // });
+    //
+    // $(elementSelecter).on('cancel.daterangepicker', function(ev, picker) {
+    //   if (debug_daterangepicker) {
+    //     console.log("cancel event fired");
+    //   }
+    // });
 
     $('#destroy').click(function() {
-      $('#reportrange').data('daterangepicker').remove();
+      $(elementSelecter).data('daterangepicker').remove();
     });
   }
 
@@ -241,9 +249,9 @@ window.admin.daterangepicker = (function () {
   }
 })();
 
-$(document).ready(function() {
-  admin.daterangepicker.init_daterangepicker();
-  admin.daterangepicker.init_daterangepicker_right();
-  admin.daterangepicker.init_daterangepicker_single_call();
-  admin.daterangepicker.init_daterangepicker_reservation();
-});
+// $(document).ready(function() {
+//   admin.daterangepicker.init_daterangepicker();
+//   admin.daterangepicker.init_daterangepicker_right();
+//   admin.daterangepicker.init_daterangepicker_single_call();
+//   admin.daterangepicker.init_daterangepicker_reservation();
+// });
