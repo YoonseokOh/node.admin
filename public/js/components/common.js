@@ -50,6 +50,7 @@ var $LEFT_COL = $('.left_col');
 var $RIGHT_COL = $('.right_col');
 var $NAV_MENU = $('.nav_menu');
 var $FOOTER = $('footer');
+var common_debug = false;
 
 // Sidebar
 function init_sidebar() {
@@ -70,7 +71,9 @@ function init_sidebar() {
   };
 
   $SIDEBAR_MENU.find('a').on('click', function(ev) {
-    console.log('clicked - sidebar_menu');
+    if (common_debug) {
+      console.log('clicked - sidebar_menu');
+    }
 
     var $li = $(this).parent();
 
@@ -101,7 +104,9 @@ function init_sidebar() {
 
   // toggle small or large menu
   $MENU_TOGGLE.on('click', function() {
-    console.log('clicked - menu toggle');
+    if (common_debug) {
+      console.log('clicked - menu toggle');
+    }
 
     if ($BODY.hasClass('nav-md')) {
       $SIDEBAR_MENU.find('li.active ul').hide();
@@ -251,13 +256,17 @@ $('body').popover({
 
 /* CUSTOM NOTIFICATION */
 function init_CustomNotification() {
-  console.log('run_customtabs');
+  if (common_debug) {
+    console.log('run_customtabs');
+  }
 
   if (typeof (CustomTabs) === 'undefined') {
     return;
   }
 
-  console.log('init_CustomTabs');
+  if (common_debug) {
+    console.log('init_CustomTabs');
+  }
 
   var cnt = 10;
 
@@ -313,7 +322,9 @@ function init_compose() {
     return;
   }
 
-  console.log('init_compose');
+  if (common_debug) {
+    console.log('init_compose');
+  }
 
   $('#compose, .compose-close').click(function(){
     $('.compose').slideToggle();

@@ -36,7 +36,6 @@ window.admin.jVectorMap = (function () {
     }
 
     if ($('#usa_map').length ){
-
       $('#usa_map').vectorMap({
         map: 'usa_en',
         backgroundColor: null,
@@ -45,7 +44,6 @@ window.admin.jVectorMap = (function () {
         selectedColor: '#666666',
         enableZoom: true,
         showTooltip: true,
-        values: gdpData,
         scaleColors: ['#E6F2F0', '#149B7E'],
         normalizeFunction: 'polynomial'
       });

@@ -12,13 +12,16 @@
 
 window.admin = window.admin || {};
 window.admin.daterangepicker = (function () {
-  var debug_daterangepicker = true;
-  var default_minDate = '05/01/2016';
+  var debug_daterangepicker = false;
+  var default_minDate = '2016-05-01';
+  var default_startDate = moment(moment().format('YYYY-MM-DD')).subtract(29, 'days');
+  var default_endDate = moment(moment().format('YYYY-MM-DD'));
+
   var option = {
-    startDate: moment().subtract(29, 'days'),
-    endDate: moment(),
+    startDate: moment(moment().format('YYYY-MM-DD')).subtract(29, 'days'),
+    endDate: moment(moment().format('YYYY-MM-DD')),
     minDate: default_minDate,
-    maxDate: moment().add(1, 'years'),
+    maxDate: moment(moment().format('YYYY-MM-DD')).add(1, 'years'),
     dateLimit: {
       days: 60
     },
@@ -39,7 +42,7 @@ window.admin.daterangepicker = (function () {
     buttonClasses: ['btn btn-default'],
     applyClass: 'btn-small btn-primary',
     cancelClass: 'btn-small',
-    format: 'MM/DD/YYYY',
+    format: 'YYYY-MM-DD',
     separator: ' to ',
     locale: {
       applyLabel: '설정',
@@ -54,8 +57,8 @@ window.admin.daterangepicker = (function () {
   }
 
   /* DATERANGEPICKER */
-  function init_daterangepicker(elementId) {
-    if (typeof ($.fn.daterangepicker) === 'undefined' || !elementId) {
+  function init_daterangepicker(contentId, data) {
+    if (typeof ($.fn.daterangepicker) === 'undefined' || !contentId) {
       return;
     }
 
@@ -63,7 +66,7 @@ window.admin.daterangepicker = (function () {
       console.log('init_daterangepicker');
     }
 
-    elementSelecter = '#' + elementId;
+    elementSelecter = '#reportrange-' + contentId;
 
     var cb = function(start, end, label) {
       if (debug_daterangepicker) {
@@ -72,10 +75,16 @@ window.admin.daterangepicker = (function () {
       $(elementSelecter + ' span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
     };
 
-    $(elementSelecter + ' span').html(moment().subtract(29, 'days').format('YYYY-MM-DD') + ' - ' + moment().format('YYYY-MM-DD'));
+    // Set default date
+    $(elementSelecter + ' span').html(moment(default_startDate).format('YYYY-MM-DD') + ' - ' + moment(default_endDate).format('YYYY-MM-DD'));
+    if (data) {
+      data.params.searchDate.startDate = default_startDate.format('YYYY-MM-DD HH:mm:ss:');
+      data.params.searchDate.endDate = default_endDate.format('YYYY-MM-DD HH:mm:ss');
+    }
 
     $(elementSelecter).daterangepicker(option, cb);
 
+    // Sample code
     // $(elementSelecter).on('show.daterangepicker', function() {
     //   if (debug_daterangepicker) {
     //     console.log("show event fired");

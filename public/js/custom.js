@@ -85,7 +85,7 @@ function init_sidebar() {
         $SIDEBAR_MENU.find('li ul').slideUp();
       }else
       {
-        if ( $BODY.is( ".nav-sm" ) )
+        if ($BODY.is( ".nav-sm" ) )
         {
           $SIDEBAR_MENU.find( "li" ).removeClass( "active active-sm" );
           $SIDEBAR_MENU.find( "li ul" ).slideUp();
@@ -211,8 +211,8 @@ $(document).ready(function() {
   if ($("input.flat")[0]) {
     $(document).ready(function () {
       $('input.flat').iCheck({
-        checkboxClass: 'icheckbox_flat-green',
-        radioClass: 'iradio_flat-green'
+        checkboxClass: 'icheckbox_flat-blue',
+        radioClass: 'iradio_flat-blue'
       });
     });
   }
@@ -338,9 +338,12 @@ function gd(year, month, day) {
 }
 
 
+
 function init_flot_chart(){
 
-  if( typeof ($.plot) === 'undefined'){ return; }
+  if (typeof ($.plot) === 'undefined') {
+    return;
+  }
 
   console.log('init_flot_chart');
 
@@ -593,8 +596,9 @@ function init_flot_chart(){
 /* STARRR */
 
 function init_starrr() {
-
-  if( typeof (starrr) === 'undefined'){ return; }
+  if (typeof (starrr) === 'undefined') {
+    return;
+  }
   console.log('init_starrr');
 
   $(".stars").starrr();
@@ -610,20 +614,18 @@ function init_starrr() {
   $('.stars-existing').on('starrr:change', function (e, value) {
     $('.stars-count-existing').html(value);
   });
-
 };
 
 
 function init_JQVmap(){
-
   //console.log('check init_JQVmap [' + typeof (VectorCanvas) + '][' + typeof (jQuery.fn.vectorMap) + ']' );
-
-  if(typeof (jQuery.fn.vectorMap) === 'undefined'){ return; }
+  if (typeof (jQuery.fn.vectorMap) === 'undefined') {
+    return;
+  }
 
   console.log('init_JQVmap');
 
   if ($('#world-map-gdp').length ){
-
     $('#world-map-gdp').vectorMap({
       map: 'world_mill_en',
       backgroundColor: null,
@@ -636,60 +638,57 @@ function init_JQVmap(){
       scaleColors: ['#E6F2F0', '#149B7E'],
       normalizeFunction: 'polynomial'
     });
-
   }
 
-  if ($('#usa_map').length ){
-
-    $('#usa_map').vectorMap({
-      map: 'usa_en',
-      backgroundColor: null,
-      color: '#ffffff',
-      hoverOpacity: 0.7,
-      selectedColor: '#666666',
-      enableZoom: true,
-      showTooltip: true,
-      values: gdpData,
-      scaleColors: ['#E6F2F0', '#149B7E'],
-      normalizeFunction: 'polynomial'
-    });
-
-  }
-
+  // if ($('#usa_map').length ){
+  //   $('#usa_map').vectorMap({
+  //     map: 'usa_en',
+  //     backgroundColor: null,
+  //     color: '#ffffff',
+  //     hoverOpacity: 0.7,
+  //     selectedColor: '#666666',
+  //     enableZoom: true,
+  //     showTooltip: true,
+  //     values: gdpData,
+  //     scaleColors: ['#E6F2F0', '#149B7E'],
+  //     normalizeFunction: 'polynomial'
+  //   });
+  // }
 };
 
 
 function init_skycons(){
-
-  if( typeof (Skycons) === 'undefined'){ return; }
+  if (typeof (Skycons) === 'undefined') {
+    return;
+  }
   console.log('init_skycons');
 
   var icons = new Skycons({
-      "color": "#73879C"
-    }),
-    list = [
-      "clear-day", "clear-night", "partly-cloudy-day",
-      "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-      "fog"
-    ],
-    i;
+    "color": "#73879C"
+  });
+  var list = [
+    "clear-day", "clear-night", "partly-cloudy-day",
+    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+    "fog"
+  ];
+  var i;
 
-  for (i = list.length; i--;)
+  for (i = list.length; i--;) {
     icons.set(list[i], list[i]);
+  }
 
   icons.play();
-
 }
 
 
 function init_chart_doughnut(){
-
-  if( typeof (Chart) === 'undefined'){ return; }
+  if (typeof (Chart) === 'undefined') {
+    return;
+  }
 
   console.log('init_chart_doughnut');
 
   if ($('.canvasDoughnut').length){
-
     var chart_doughnut_settings = {
       type: 'doughnut',
       tooltipFillColor: "rgba(51, 51, 51, 0.55)",
@@ -726,24 +725,20 @@ function init_chart_doughnut(){
     }
 
     $('.canvasDoughnut').each(function(){
-
       var chart_element = $(this);
       var chart_doughnut = new Chart( chart_element, chart_doughnut_settings);
-
     });
-
   }
-
 }
 
-function init_gauge() {
 
-  if( typeof (Gauge) === 'undefined'){ return; }
+function init_gauge() {
+  if (typeof (Gauge) === 'undefined') {
+    return;
+  }
 
   console.log('init_gauge [' + $('.gauge-chart').length + ']');
-
   console.log('init_gauge');
-
 
   var chart_gauge_settings = {
     lines: 12,
@@ -761,50 +756,40 @@ function init_gauge() {
     generateGradient: true
   };
 
-
-  if ($('#chart_gauge_01').length){
-
+  if ($('#chart_gauge_01').length) {
     var chart_gauge_01_elem = document.getElementById('chart_gauge_01');
     var chart_gauge_01 = new Gauge(chart_gauge_01_elem).setOptions(chart_gauge_settings);
   }
 
 
   if ($('#gauge-text').length){
-
     chart_gauge_01.maxValue = 6000;
     chart_gauge_01.animationSpeed = 32;
     chart_gauge_01.set(3200);
     chart_gauge_01.setTextField(document.getElementById("gauge-text"));
-
   }
 
   if ($('#chart_gauge_02').length){
-
     var chart_gauge_02_elem = document.getElementById('chart_gauge_02');
     var chart_gauge_02 = new Gauge(chart_gauge_02_elem).setOptions(chart_gauge_settings);
-
   }
 
-
   if ($('#gauge-text2').length){
-
     chart_gauge_02.maxValue = 9000;
     chart_gauge_02.animationSpeed = 32;
     chart_gauge_02.set(2400);
     chart_gauge_02.setTextField(document.getElementById("gauge-text2"));
-
   }
-
-
 }
 
+
 /* SPARKLINES */
-
 function init_sparklines() {
+  if (typeof (jQuery.fn.sparkline) === 'undefined') {
+    return;
+  }
 
-  if(typeof (jQuery.fn.sparkline) === 'undefined'){ return; }
   console.log('init_sparklines');
-
 
   $(".sparkline_one").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
     type: 'bar',
@@ -817,7 +802,6 @@ function init_sparklines() {
     barColor: '#26B99A'
   });
 
-
   $(".sparkline_two").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
     type: 'bar',
     height: '40',
@@ -828,7 +812,6 @@ function init_sparklines() {
     barSpacing: 2,
     barColor: '#26B99A'
   });
-
 
   $(".sparkline_three").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6], {
     type: 'line',
@@ -841,7 +824,6 @@ function init_sparklines() {
     minSpotColor: '#26B99A'
   });
 
-
   $(".sparkline11").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 6, 2, 4, 3, 4, 5, 4, 5, 4, 3], {
     type: 'bar',
     height: '40',
@@ -852,7 +834,6 @@ function init_sparklines() {
     barSpacing: 2,
     barColor: '#26B99A'
   });
-
 
   $(".sparkline22").sparkline([2, 4, 3, 4, 7, 5, 4, 3, 5, 6, 2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 6], {
     type: 'line',
@@ -865,7 +846,6 @@ function init_sparklines() {
     minSpotColor: '#34495E'
   });
 
-
   $(".sparkline_bar").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5], {
     type: 'bar',
     colorMap: {
@@ -873,7 +853,6 @@ function init_sparklines() {
     },
     barColor: '#26B99A'
   });
-
 
   $(".sparkline_area").sparkline([5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6, 7], {
     type: 'line',
@@ -888,7 +867,6 @@ function init_sparklines() {
     width: 85
   });
 
-
   $(".sparkline_line").sparkline([2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5], {
     type: 'line',
     lineColor: '#26B99A',
@@ -898,12 +876,10 @@ function init_sparklines() {
     minSpotColor: '#34495E'
   });
 
-
   $(".sparkline_pie").sparkline([1, 1, 2, 1], {
     type: 'pie',
     sliceColors: ['#26B99A', '#ccc', '#75BCDD', '#D66DE2']
   });
-
 
   $(".sparkline_discreet").sparkline([4, 6, 7, 7, 4, 3, 2, 1, 4, 4, 2, 4, 3, 7, 8, 9, 7, 6, 4, 3], {
     type: 'discrete',
@@ -911,20 +887,18 @@ function init_sparklines() {
     lineColor: '#26B99A',
     width: '85',
   });
-
-
 };
 
 
 /* AUTOCOMPLETE */
-
 function init_autocomplete() {
+  if (typeof (autocomplete) === 'undefined') {
+    return;
+  }
 
-  if( typeof (autocomplete) === 'undefined'){ return; }
   console.log('init_autocomplete');
 
   var countries = { AD:"Andorra",A2:"Andorra Test",AE:"United Arab Emirates",AF:"Afghanistan",AG:"Antigua and Barbuda",AI:"Anguilla",AL:"Albania",AM:"Armenia",AN:"Netherlands Antilles",AO:"Angola",AQ:"Antarctica",AR:"Argentina",AS:"American Samoa",AT:"Austria",AU:"Australia",AW:"Aruba",AX:"Åland Islands",AZ:"Azerbaijan",BA:"Bosnia and Herzegovina",BB:"Barbados",BD:"Bangladesh",BE:"Belgium",BF:"Burkina Faso",BG:"Bulgaria",BH:"Bahrain",BI:"Burundi",BJ:"Benin",BL:"Saint Barthélemy",BM:"Bermuda",BN:"Brunei",BO:"Bolivia",BQ:"British Antarctic Territory",BR:"Brazil",BS:"Bahamas",BT:"Bhutan",BV:"Bouvet Island",BW:"Botswana",BY:"Belarus",BZ:"Belize",CA:"Canada",CC:"Cocos [Keeling] Islands",CD:"Congo - Kinshasa",CF:"Central African Republic",CG:"Congo - Brazzaville",CH:"Switzerland",CI:"Côte d’Ivoire",CK:"Cook Islands",CL:"Chile",CM:"Cameroon",CN:"China",CO:"Colombia",CR:"Costa Rica",CS:"Serbia and Montenegro",CT:"Canton and Enderbury Islands",CU:"Cuba",CV:"Cape Verde",CX:"Christmas Island",CY:"Cyprus",CZ:"Czech Republic",DD:"East Germany",DE:"Germany",DJ:"Djibouti",DK:"Denmark",DM:"Dominica",DO:"Dominican Republic",DZ:"Algeria",EC:"Ecuador",EE:"Estonia",EG:"Egypt",EH:"Western Sahara",ER:"Eritrea",ES:"Spain",ET:"Ethiopia",FI:"Finland",FJ:"Fiji",FK:"Falkland Islands",FM:"Micronesia",FO:"Faroe Islands",FQ:"French Southern and Antarctic Territories",FR:"France",FX:"Metropolitan France",GA:"Gabon",GB:"United Kingdom",GD:"Grenada",GE:"Georgia",GF:"French Guiana",GG:"Guernsey",GH:"Ghana",GI:"Gibraltar",GL:"Greenland",GM:"Gambia",GN:"Guinea",GP:"Guadeloupe",GQ:"Equatorial Guinea",GR:"Greece",GS:"South Georgia and the South Sandwich Islands",GT:"Guatemala",GU:"Guam",GW:"Guinea-Bissau",GY:"Guyana",HK:"Hong Kong SAR China",HM:"Heard Island and McDonald Islands",HN:"Honduras",HR:"Croatia",HT:"Haiti",HU:"Hungary",ID:"Indonesia",IE:"Ireland",IL:"Israel",IM:"Isle of Man",IN:"India",IO:"British Indian Ocean Territory",IQ:"Iraq",IR:"Iran",IS:"Iceland",IT:"Italy",JE:"Jersey",JM:"Jamaica",JO:"Jordan",JP:"Japan",JT:"Johnston Island",KE:"Kenya",KG:"Kyrgyzstan",KH:"Cambodia",KI:"Kiribati",KM:"Comoros",KN:"Saint Kitts and Nevis",KP:"North Korea",KR:"South Korea",KW:"Kuwait",KY:"Cayman Islands",KZ:"Kazakhstan",LA:"Laos",LB:"Lebanon",LC:"Saint Lucia",LI:"Liechtenstein",LK:"Sri Lanka",LR:"Liberia",LS:"Lesotho",LT:"Lithuania",LU:"Luxembourg",LV:"Latvia",LY:"Libya",MA:"Morocco",MC:"Monaco",MD:"Moldova",ME:"Montenegro",MF:"Saint Martin",MG:"Madagascar",MH:"Marshall Islands",MI:"Midway Islands",MK:"Macedonia",ML:"Mali",MM:"Myanmar [Burma]",MN:"Mongolia",MO:"Macau SAR China",MP:"Northern Mariana Islands",MQ:"Martinique",MR:"Mauritania",MS:"Montserrat",MT:"Malta",MU:"Mauritius",MV:"Maldives",MW:"Malawi",MX:"Mexico",MY:"Malaysia",MZ:"Mozambique",NA:"Namibia",NC:"New Caledonia",NE:"Niger",NF:"Norfolk Island",NG:"Nigeria",NI:"Nicaragua",NL:"Netherlands",NO:"Norway",NP:"Nepal",NQ:"Dronning Maud Land",NR:"Nauru",NT:"Neutral Zone",NU:"Niue",NZ:"New Zealand",OM:"Oman",PA:"Panama",PC:"Pacific Islands Trust Territory",PE:"Peru",PF:"French Polynesia",PG:"Papua New Guinea",PH:"Philippines",PK:"Pakistan",PL:"Poland",PM:"Saint Pierre and Miquelon",PN:"Pitcairn Islands",PR:"Puerto Rico",PS:"Palestinian Territories",PT:"Portugal",PU:"U.S. Miscellaneous Pacific Islands",PW:"Palau",PY:"Paraguay",PZ:"Panama Canal Zone",QA:"Qatar",RE:"Réunion",RO:"Romania",RS:"Serbia",RU:"Russia",RW:"Rwanda",SA:"Saudi Arabia",SB:"Solomon Islands",SC:"Seychelles",SD:"Sudan",SE:"Sweden",SG:"Singapore",SH:"Saint Helena",SI:"Slovenia",SJ:"Svalbard and Jan Mayen",SK:"Slovakia",SL:"Sierra Leone",SM:"San Marino",SN:"Senegal",SO:"Somalia",SR:"Suriname",ST:"São Tomé and Príncipe",SU:"Union of Soviet Socialist Republics",SV:"El Salvador",SY:"Syria",SZ:"Swaziland",TC:"Turks and Caicos Islands",TD:"Chad",TF:"French Southern Territories",TG:"Togo",TH:"Thailand",TJ:"Tajikistan",TK:"Tokelau",TL:"Timor-Leste",TM:"Turkmenistan",TN:"Tunisia",TO:"Tonga",TR:"Turkey",TT:"Trinidad and Tobago",TV:"Tuvalu",TW:"Taiwan",TZ:"Tanzania",UA:"Ukraine",UG:"Uganda",UM:"U.S. Minor Outlying Islands",US:"United States",UY:"Uruguay",UZ:"Uzbekistan",VA:"Vatican City",VC:"Saint Vincent and the Grenadines",VD:"North Vietnam",VE:"Venezuela",VG:"British Virgin Islands",VI:"U.S. Virgin Islands",VN:"Vietnam",VU:"Vanuatu",WF:"Wallis and Futuna",WK:"Wake Island",WS:"Samoa",YD:"People's Democratic Republic of Yemen",YE:"Yemen",YT:"Mayotte",ZA:"South Africa",ZM:"Zambia",ZW:"Zimbabwe",ZZ:"Unknown or Invalid Region" };
-
   var countriesArray = $.map(countries, function(value, key) {
     return {
       value: value,
@@ -936,26 +910,22 @@ function init_autocomplete() {
   $('#autocomplete-custom-append').autocomplete({
     lookup: countriesArray
   });
-
 };
+
 
 /* AUTOSIZE */
-
 function init_autosize() {
-
-  if(typeof $.fn.autosize !== 'undefined'){
-
+  if (typeof $.fn.autosize !== 'undefined'){
     autosize($('.resizable_textarea'));
-
   }
-
 };
 
+
 /* PARSLEY */
-
 function init_parsley() {
-
-  if( typeof (parsley) === 'undefined'){ return; }
+  if (typeof (parsley) === 'undefined') {
+    return;
+  }
   console.log('init_parsley');
 
   $/*.listen*/('parsley:field:validate', function() {
@@ -1016,7 +986,7 @@ function onChangeTag(input, tag) {
 //tags input
 function init_TagsInput() {
 
-  if(typeof $.fn.tagsInput !== 'undefined'){
+  if (typeof $.fn.tagsInput !== 'undefined'){
 
     $('#tags_1').tagsInput({
       width: 'auto'
@@ -1030,7 +1000,9 @@ function init_TagsInput() {
 
 function init_select2() {
 
-  if( typeof (select2) === 'undefined'){ return; }
+  if (typeof (select2) === 'undefined') {
+    return;
+  }
   console.log('init_toolbox');
 
   $(".select2_single").select2({
@@ -1050,7 +1022,9 @@ function init_select2() {
 
 function init_wysiwyg() {
 
-  if( typeof ($.fn.wysiwyg) === 'undefined'){ return; }
+  if (typeof ($.fn.wysiwyg) === 'undefined') {
+    return;
+  }
   console.log('init_wysiwyg');
 
   function init_ToolbarBootstrapBindings() {
@@ -1125,7 +1099,9 @@ function init_wysiwyg() {
 function init_cropper() {
 
 
-  if( typeof ($.fn.cropper) === 'undefined'){ return; }
+  if (typeof ($.fn.cropper) === 'undefined') {
+    return;
+  }
   console.log('init_cropper');
 
   var $image = $('#image');
@@ -1359,7 +1335,9 @@ function init_cropper() {
 
 function init_knob() {
 
-  if( typeof ($.fn.knob) === 'undefined'){ return; }
+  if (typeof ($.fn.knob) === 'undefined') {
+    return;
+  }
   console.log('init_knob');
 
   $(".knob").knob({
@@ -1465,7 +1443,9 @@ function init_knob() {
 
 function init_InputMask() {
 
-  if( typeof ($.fn.inputmask) === 'undefined'){ return; }
+  if (typeof ($.fn.inputmask) === 'undefined') {
+    return;
+  }
   console.log('init_InputMask');
 
   $(":input").inputmask();
@@ -1476,7 +1456,9 @@ function init_InputMask() {
 
 function init_ColorPicker() {
 
-  if( typeof ($.fn.colorpicker) === 'undefined'){ return; }
+  if (typeof ($.fn.colorpicker) === 'undefined') {
+    return;
+  }
   console.log('init_ColorPicker');
 
   $('.demo1').colorpicker();
@@ -1500,7 +1482,9 @@ function init_ColorPicker() {
 
 function init_IonRangeSlider() {
 
-  if( typeof ($.fn.ionRangeSlider) === 'undefined'){ return; }
+  if (typeof ($.fn.ionRangeSlider) === 'undefined') {
+    return;
+  }
   console.log('init_IonRangeSlider');
 
   $("#range_27").ionRangeSlider({
@@ -1568,10 +1552,11 @@ function init_IonRangeSlider() {
 
 
 /* DATERANGEPICKER */
-
 function init_daterangepicker() {
+  if (typeof ($.fn.daterangepicker) === 'undefined') {
+    return;
+  }
 
-  if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
   console.log('init_daterangepicker');
 
   var cb = function(start, end, label) {
@@ -1582,8 +1567,8 @@ function init_daterangepicker() {
   var optionSet1 = {
     startDate: moment().subtract(29, 'days'),
     endDate: moment(),
-    minDate: '01/01/2012',
-    maxDate: '12/31/2015',
+    minDate: '05/01/2016',
+    maxDate: moment().add(1, 'years'),
     dateLimit: {
       days: 60
     },
@@ -1593,32 +1578,59 @@ function init_daterangepicker() {
     timePickerIncrement: 1,
     timePicker12Hour: true,
     ranges: {
-      'Today': [moment(), moment()],
-      'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-      'This Month': [moment().startOf('month'), moment().endOf('month')],
-      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      '오늘': [moment(), moment()],
+      '어제': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      '지난 7일': [moment().subtract(6, 'days'), moment()],
+      '지난 30일': [moment().subtract(29, 'days'), moment()],
+      '이번달': [moment().startOf('month'), moment().endOf('month')],
+      '지난달': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
     },
+    // autoWidth: true,
+    // processing: true,
+    // serverSide: true,
+    // responsive: true,
+    // language: {
+    //   emptyTable: '데이터가 없습니다.',
+    //   zeroRecords: '데이터가 없습니다.'
+    // },
     opens: 'left',
     buttonClasses: ['btn btn-default'],
     applyClass: 'btn-small btn-primary',
     cancelClass: 'btn-small',
-    format: 'MM/DD/YYYY',
+    format: 'YYYY/MM/DD',
     separator: ' to ',
     locale: {
-      applyLabel: 'Submit',
-      cancelLabel: 'Clear',
-      fromLabel: 'From',
-      toLabel: 'To',
-      customRangeLabel: 'Custom',
-      daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-      monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      applyLabel: '설정',
+      cancelLabel: '취소',
+      fromLabel: '시작',
+      toLabel: '끝',
+      customRangeLabel: '사용자설정',
+      daysOfWeek: ['일', '월', '화', '수', '목', '금', '토'],
+      monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
       firstDay: 1
     }
+    // ranges: {
+    //   'Today': [moment(), moment()],
+    //   'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    //   'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+    //   'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+    //   'This Month': [moment().startOf('month'), moment().endOf('month')],
+    //   'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    // },
+    // locale: {
+    //   applyLabel: 'Submit',
+    //   cancelLabel: 'Clear',
+    //   fromLabel: 'From',
+    //   toLabel: 'To',
+    //   customRangeLabel: 'Custom',
+    //   daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+    //   monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    //   firstDay: 1
+    // }
   };
 
-  $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+  $('#reportrange span').html(moment().subtract(29, 'days').format('YYYY-MM-DD') + ' - ' + moment().format('YYYY-MM-DD'));
+  // $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
   $('#reportrange').daterangepicker(optionSet1, cb);
   $('#reportrange').on('show.daterangepicker', function() {
     console.log("show event fired");
@@ -1626,12 +1638,29 @@ function init_daterangepicker() {
   $('#reportrange').on('hide.daterangepicker', function() {
     console.log("hide event fired");
   });
-  $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
-    console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
-  });
-  $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
-    console.log("cancel event fired");
-  });
+  // $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
+  //   console.log("apply event fired, start/end dates are " + picker.startDate.format('YYYY-MM-DD') + " to " + picker.endDate.format('YYYY-MM-DD'));
+  //   console.log('table')
+  //   console.log(table)
+  //   if (typeof table !== 'undefined') {
+  //     console.log('table draw')
+  //     table.draw();
+  //   }
+  // });
+  // $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
+  //   console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
+  // });
+  // $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
+  //   console.log("cancel event fired");
+  //   if (typeof searchType !== 'undefined') {
+  //     searchType = -1;
+  //     $('.search-date-type').text('검색 기간');
+  //   }
+  //   if (typeof table !== 'undefined') {
+  //     table.draw();
+  //   }
+  // });
+
   $('#options1').click(function() {
     $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
   });
@@ -1641,12 +1670,12 @@ function init_daterangepicker() {
   $('#destroy').click(function() {
     $('#reportrange').data('daterangepicker').remove();
   });
-
 }
 
 function init_daterangepicker_right() {
-
-  if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
+  if (typeof ($.fn.daterangepicker) === 'undefined') {
+    return;
+  }
   console.log('init_daterangepicker_right');
 
   var cb = function(start, end, label) {
@@ -1724,9 +1753,11 @@ function init_daterangepicker_right() {
 
 }
 
-function init_daterangepicker_single_call() {
 
-  if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
+function init_daterangepicker_single_call() {
+  if (typeof ($.fn.daterangepicker) === 'undefined') {
+    return;
+  }
   console.log('init_daterangepicker_single_call');
 
   $('#single_cal1').daterangepicker({
@@ -1753,14 +1784,13 @@ function init_daterangepicker_single_call() {
   }, function(start, end, label) {
     console.log(start.toISOString(), end.toISOString(), label);
   });
-
-
 }
 
 
 function init_daterangepicker_reservation() {
-
-  if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
+  if (typeof ($.fn.daterangepicker) === 'undefined') {
+    return;
+  }
   console.log('init_daterangepicker_reservation');
 
   $('#reservation').daterangepicker(null, function(start, end, label) {
@@ -1774,14 +1804,14 @@ function init_daterangepicker_reservation() {
       format: 'MM/DD/YYYY h:mm A'
     }
   });
-
 }
 
+
 /* SMART WIZARD */
-
 function init_SmartWizard() {
-
-  if( typeof ($.fn.smartWizard) === 'undefined'){ return; }
+  if (typeof ($.fn.smartWizard) === 'undefined') {
+    return;
+  }
   console.log('init_SmartWizard');
 
   $('#wizard').smartWizard();
@@ -1793,15 +1823,14 @@ function init_SmartWizard() {
   $('.buttonNext').addClass('btn btn-success');
   $('.buttonPrevious').addClass('btn btn-primary');
   $('.buttonFinish').addClass('btn btn-default');
-
 };
 
 
 /* VALIDATOR */
-
 function init_validator () {
-
-  if( typeof (validator) === 'undefined'){ return; }
+  if (typeof (validator) === 'undefined') {
+    return;
+  }
   console.log('init_validator');
 
   // initialize the validator function
@@ -1838,7 +1867,9 @@ function init_validator () {
 
 function init_PNotify() {
 
-  if( typeof (PNotify) === 'undefined'){ return; }
+  if (typeof (PNotify) === 'undefined') {
+    return;
+  }
   console.log('init_PNotify');
 
   new PNotify({
@@ -1872,7 +1903,9 @@ function init_CustomNotification() {
 
   console.log('run_customtabs');
 
-  if( typeof (CustomTabs) === 'undefined'){ return; }
+  if (typeof (CustomTabs) === 'undefined') {
+    return;
+  }
   console.log('init_CustomTabs');
 
   var cnt = 10;
@@ -1927,7 +1960,9 @@ function init_CustomNotification() {
 
 function init_EasyPieChart() {
 
-  if( typeof ($.fn.easyPieChart) === 'undefined'){ return; }
+  if (typeof ($.fn.easyPieChart) === 'undefined') {
+    return;
+  }
   console.log('init_EasyPieChart');
 
   $('.chart').easyPieChart({
@@ -1987,7 +2022,9 @@ function init_charts() {
 
   console.log('run_charts  typeof [' + typeof (Chart) + ']');
 
-  if( typeof (Chart) === 'undefined'){ return; }
+  if (typeof (Chart) === 'undefined') {
+    return;
+  }
 
   console.log('init_charts');
 
@@ -2385,7 +2422,9 @@ function init_charts() {
 
 function init_compose() {
 
-  if( typeof ($.fn.slideToggle) === 'undefined'){ return; }
+  if (typeof ($.fn.slideToggle) === 'undefined') {
+    return;
+  }
   console.log('init_compose');
 
   $('#compose, .compose-close').click(function(){
@@ -2398,7 +2437,9 @@ function init_compose() {
 
 function  init_calendar() {
 
-  if( typeof ($.fn.fullCalendar) === 'undefined'){ return; }
+  if (typeof ($.fn.fullCalendar) === 'undefined') {
+    return;
+  }
   console.log('init_calendar');
 
   var date = new Date(),
@@ -2503,7 +2544,9 @@ function init_DataTables() {
 
   console.log('run_datatables');
 
-  if( typeof ($.fn.DataTable) === 'undefined'){ return; }
+  if (typeof ($.fn.DataTable) === 'undefined') {
+    return;
+  }
   console.log('init_DataTables');
 
   var handleDataTableButtons = function() {
@@ -2588,7 +2631,9 @@ function init_DataTables() {
 
 function init_morris_charts() {
 
-  if( typeof (Morris) === 'undefined'){ return; }
+  if (typeof (Morris) === 'undefined') {
+    return;
+  }
   console.log('init_morris_charts');
 
   if ($('#graph_bar').length){
@@ -2748,7 +2793,9 @@ function init_morris_charts() {
 
 function init_echarts() {
 
-  if( typeof (echarts) === 'undefined'){ return; }
+  if (typeof (echarts) === 'undefined') {
+    return;
+  }
   console.log('init_echarts');
 
 
