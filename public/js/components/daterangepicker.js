@@ -13,13 +13,13 @@
 window.admin = window.admin || {};
 window.admin.daterangepicker = (function () {
   var debug_daterangepicker = false;
-  var default_minDate = '2016-05-01';
+  var default_minDate = moment(moment().format('2015-01-01'));
   var default_startDate = moment(moment().format('YYYY-MM-DD')).subtract(29, 'days');
   var default_endDate = moment(moment().format('YYYY-MM-DD'));
 
   var option = {
-    startDate: moment(moment().format('YYYY-MM-DD')).subtract(29, 'days'),
-    endDate: moment(moment().format('YYYY-MM-DD')),
+    startDate: default_startDate,
+    endDate: default_endDate,
     minDate: default_minDate,
     maxDate: moment(moment().format('YYYY-MM-DD')).add(1, 'years'),
     dateLimit: {
