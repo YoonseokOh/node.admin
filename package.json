@@ -13,16 +13,16 @@
     "init": ""
   },
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "compression": "^1.7.0",
-    "config": "^1.26.2",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "config": "^1.31.0",
     "cookie-parser": "^1.4.3",
-    "express": "^4.15.4",
+    "express": "^4.16.4",
     "express-minify": "^0.2.0",
     "gentelella": "^1.4.0",
     "hbs": "^4.0.1",
-    "lodash": "^4.17.5",
-    "moment": "^2.20.1",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "path": "^0.12.7"
   },
   "devDependencies": {}

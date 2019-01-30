@@ -1,7 +1,17 @@
-# install
-* npm install -g bower
-* npm install -g bower-installer
+# node.admin
+
+#### install
 * npm install
+* npm i -g bower
+* npm i -g bower-installer
 * bower install
 * export NODE_ENV=production (option)
-* node bin/admin
+
+#### Run
+node bin/admin
+
+#### Preview page
+https://admin.yoonseokoh.com
+
+#### Contact
+yoonseokoh@yoonseokoh.com
