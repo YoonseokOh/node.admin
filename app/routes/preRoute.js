@@ -11,7 +11,7 @@
  */
 
 module.exports = function(express) {
-  if (cfg.env === 'development') {
+  if (cfg.env !== 'production') {
     express.use(function (req, res, next) {
       console.log(decodeURI(req.originalUrl));
       next();

@@ -12,14 +12,20 @@
 
 window.admin = window.admin || {};
 window.admin.Chart = (function () {
+  var debug = false;
+
   function init_charts() {
-    console.log('run_charts  typeof [' + typeof (Chart) + ']');
+    if (debug) {
+      console.log('run_charts  typeof [' + typeof (Chart) + ']');
+    }
 
     if (typeof (Chart) === 'undefined') {
       return;
     }
 
-    console.log('init_charts');
+    if (debug) {
+      console.log('init_charts');
+    }
 
     Chart.defaults.global.legend.enabled = false;
 
@@ -142,7 +148,6 @@ window.admin.Chart = (function () {
         },
       });
     }
-
 
     if ($('#canvas_line4').length ){
       var canvas_line_04 = new Chart(document.getElementById("canvas_line4"), {
@@ -382,7 +387,9 @@ window.admin.Chart = (function () {
       return;
     }
 
-    console.log('init_chart_doughnut');
+    if (debug) {
+      console.log('init_chart_doughnut');
+    }
 
     if ($('.canvasDoughnut').length){
       var chart_doughnut_settings = {
@@ -418,7 +425,7 @@ window.admin.Chart = (function () {
           legend: false,
           responsive: false
         }
-      }
+      };
 
       $('.canvasDoughnut').each(function(){
         var chart_element = $(this);

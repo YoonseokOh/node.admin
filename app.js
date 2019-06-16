@@ -17,7 +17,6 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const hbs = require('./hbs-engine');
 
 require('./app/globals/constants');
 
@@ -37,7 +36,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 // Set view engine ( hbs : handlebars )
 app.set('trust proxy', 'loopback');
 app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/app/views');
 
 if (cfg.env === 'production') {
   app.use(compression());
@@ -45,12 +44,12 @@ if (cfg.env === 'production') {
 }
 
 // Set pre route
-require('./routes/pre-route')(app);
+require('./app/routes/preRoute')(app);
 
 // Set routes
-app.use('/', require('./routes'));
+app.use('/', require('./app/routes'));
 
 // Set post route
-require('./routes/post-route')(app);
+require('./app/routes/postRoute')(app);
 
 module.exports = app;

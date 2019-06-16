@@ -1,7 +1,7 @@
 {
   "cfg": {
     "auth": {
-      "cookie": "user"
+      "cookie": "admin"
     },
     "service": {
       "name": "Yoon"
@@ -15,7 +15,7 @@
       "hbs": false
     },
     "mode": {
-      "login": true
+      "login": false
     },
     "env": "production"
   }

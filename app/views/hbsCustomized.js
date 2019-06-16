@@ -1,5 +1,5 @@
 /*
- * Function : hbs-engine.js
+ * Function : hbsCustomized.js
  *
  * Description : helper function of handle bar
  *
@@ -16,8 +16,8 @@ const hbs = require('hbs');
 
 const blocks = {};
 
-hbs.registerPartials(__dirname + '/views/components');
-hbs.registerPartials(__dirname + '/views/components/module');
+hbs.registerPartials(__dirname + '/components');
+hbs.registerPartials(__dirname + '/components/module');
 
 // HTML save
 hbs.registerHelper('extend', function(type, name, context) {
