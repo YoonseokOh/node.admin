@@ -17,6 +17,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const hbs = require('./app/views/hbsCustomized'); // Do not remove
 
 require('./app/globals/constants');
 
