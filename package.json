@@ -13,14 +13,14 @@
     "init": ""
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "compression": "^1.7.3",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "config": "^1.31.0",
-    "cookie-parser": "^1.4.3",
-    "express": "^4.16.4",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
     "express-minify": "^0.2.0",
     "gentelella": "^1.4.0",
-    "hbs": "^4.0.1",
+    "hbs": "^4.0.4",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "path": "^0.12.7"
