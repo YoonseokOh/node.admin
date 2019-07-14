@@ -12,12 +12,9 @@
 
 "use strict";
 
-const hbs = require('hbs');
+const hbs = require('handlebars');
 
 const blocks = {};
-
-hbs.registerPartials(__dirname + '/components');
-hbs.registerPartials(__dirname + '/components/module');
 
 // HTML save
 hbs.registerHelper('extend', function(type, name, context) {

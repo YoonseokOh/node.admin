@@ -15,13 +15,14 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
-    "config": "^1.31.0",
+    "config": "^3.2.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "express-minify": "^0.2.0",
+    "express-handlebars": "^3.1.0",
+    "express-minify": "^1.0.0",
     "gentelella": "^1.4.0",
-    "hbs": "^4.0.4",
-    "lodash": "^4.17.11",
+    "handlebars": "^4.1.2",
+    "lodash": "^4.17.14",
     "moment": "^2.24.0",
     "path": "^0.12.7"
   },

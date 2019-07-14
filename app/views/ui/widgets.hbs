@@ -593,11 +593,11 @@
 </div>
 <!-- /page content -->
 
-{{> common}}
-{{> progressbar}}
+{{> modules/common}}
+{{> modules/progressbar}}
 
 
-{{> easypiechart}}
+{{> modules/easypiechart}}
 {{#extend "script" "easypiechart"}}
   <script>
     $(function() {
@@ -619,7 +619,7 @@
 {{/extend}}
 
 
-{{> sparkline}}
+{{> modules/sparkline}}
 {{#extend "script" "sparkline"}}
   <script>
     $('document').ready(function() {
@@ -649,7 +649,7 @@
 {{/extend}}
 
 
-{{> Chart}}
+{{> modules/Chart}}
 {{#extend "script" "Chart"}}
   <script>
     $(document).ready(function() {

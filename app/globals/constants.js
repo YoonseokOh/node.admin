@@ -17,9 +17,9 @@ global.cfgOrigin = config.get('cfg');
 global.cfg = _.cloneDeep(cfgOrigin);
 
 const layoutType = {
-  default: 'layout/default',
-  simple: 'layout/simple',
-  nothing: 'layout/nothing'
+  default: 'default',
+  simple: 'simple',
+  nothing: 'nothing'
 };
 
 global.routesList = {

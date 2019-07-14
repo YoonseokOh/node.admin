@@ -455,11 +455,11 @@
 </div>
 <!-- /page content -->
 
-{{> common}}
-{{> progressbar}}
+{{> modules/common}}
+{{> modules/progressbar}}
 
 
-{{> Flot}}
+{{> modules/Flot}}
 {{#extend "script" "Flot"}}
   <!-- Flot -->
   <script>
@@ -567,7 +567,7 @@
   <!-- /Flot -->
 {{/extend}}
 
-{{> sparkline}}
+{{> modules/sparkline}}
 {{#extend "script" "sparkline"}}
   <!-- jQuery Sparklines -->
   <script>
@@ -610,7 +610,7 @@
 {{/extend}}
 
 <!-- Doughnut Chart -->
-{{> Chart}}
+{{> modules/Chart}}
 {{#extend "script" "Chart"}}
   <script>
     $(document).ready(function() {
@@ -723,7 +723,7 @@
   <!-- /Doughnut Chart -->
 {{/extend}}
 
-{{> daterangepicker}}
+{{> modules/daterangepicker}}
 {{#extend "script" "daterangepicker"}}
   <!-- bootstrap-daterangepicker -->
   <script type="text/javascript">
