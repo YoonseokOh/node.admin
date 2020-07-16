@@ -22,7 +22,7 @@
     "express-minify": "^1.0.0",
     "gentelella": "^1.4.0",
     "handlebars": "^4.4.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "path": "^0.12.7"
   },
