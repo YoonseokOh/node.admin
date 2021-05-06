@@ -21,7 +21,7 @@
     "express-handlebars": "^5.1.0",
     "express-minify": "^1.0.0",
     "gentelella": "^1.4.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "path": "^0.12.7"
