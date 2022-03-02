@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 // Set view engine ( hbs : handlebars )
 app.set('trust proxy', 'loopback');
-app.engine('.hbs', exphbs({
+app.engine('.hbs', exphbs.engine({
   defaultLayout: 'default',
   extname: '.hbs',
   layoutsDir: path.join(__dirname, 'app/views/layout'),
