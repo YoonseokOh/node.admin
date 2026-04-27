@@ -1,30 +1,36 @@
 {
   "name": "yoonseokoh.admin",
   "version": "1.0.0",
-  "description": "yoonseok admin page node package",
-  "homepage": "admin.yoonseokoh.com",
+  "description": "yoonseok admin page",
+  "homepage": "https://admin.yoonseokoh.com",
   "bugs": {
     "email": "yoonseok.oh@icloud.com"
   },
-  "main": "bin/www",
   "author": "yoonseokoh",
   "license": "ISC",
-  "script": {
-    "init": ""
+  "type": "module",
+  "engines": {
+    "node": ">=25.9.0",
+    "npm": ">=11.12.1"
+  },
+  "scripts": {
+    "dev": "npm run sync:gentelella && vite --host 0.0.0.0 --port 8080",
+    "build": "npm run sync:gentelella && vite build",
+    "preview": "npm run sync:gentelella && vite preview --host 0.0.0.0 --port 8080",
+    "sync:gentelella": "node scripts/sync-gentelella-vendors.mjs",
+    "postinstall": "npm run sync:gentelella"
   },
   "dependencies": {
-    "body-parser": "^1.19.2",
-    "compression": "^1.7.4",
-    "config": "^3.3.7",
-    "cookie-parser": "^1.4.6",
-    "express": "^4.17.3",
-    "express-handlebars": "^6.0.2",
-    "express-minify": "^1.0.0",
-    "gentelella": "^1.4.0",
-    "handlebars": "^4.7.7",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "path": "^0.12.7"
+    "@vitejs/plugin-react": "^6.0.1",
+    "easy-autocomplete": "^1.3.5",
+    "gentelella": "^2.1.0",
+    "gentelella-legacy-vendors": "npm:gentelella@1.4.0",
+    "handlebars": "^4.7.9",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "vite": "^8.0.10"
   },
-  "devDependencies": {}
+  "overrides": {
+    "minimist": "^1.2.8"
+  }
 }

@@ -70,7 +70,7 @@ function init_sidebar() {
     $RIGHT_COL.css('min-height', contentHeight);
   };
 
-  $SIDEBAR_MENU.find('a').on('click', function(ev) {
+  $SIDEBAR_MENU.find('a').off('click.adminSidebar').on('click.adminSidebar', function(ev) {
     if (common_debug) {
       console.log('clicked - sidebar_menu');
     }
@@ -103,7 +103,7 @@ function init_sidebar() {
   });
 
   // toggle small or large menu
-  $MENU_TOGGLE.on('click', function() {
+  $MENU_TOGGLE.off('click.adminSidebar').on('click.adminSidebar', function() {
     if (common_debug) {
       console.log('clicked - menu toggle');
     }
@@ -126,16 +126,20 @@ function init_sidebar() {
   });
 
   // check active menu
+  $SIDEBAR_MENU.find('li').removeClass('current-page');
   $SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('current-page');
 
-  $SIDEBAR_MENU.find('a').filter(function () {
+  var $currentPage = $SIDEBAR_MENU.find('a').filter(function () {
     return this.href == CURRENT_URL;
-  }).parent('li').addClass('current-page').parents('ul').slideDown(function() {
-    setContentHeight();
-  }).parent().addClass('active');
+  }).parent('li');
+
+  $SIDEBAR_MENU.find('li').not($currentPage.parents('li')).not($currentPage).removeClass('active active-sm');
+  $SIDEBAR_MENU.find('ul.child_menu').not($currentPage.parents('ul')).hide();
+
+  $currentPage.addClass('current-page').parents('ul').show().parent().addClass('active');
 
   // recompute content when resizing
-  $(window).smartresize(function(){
+  $(window).off('resize.adminSidebar').on('resize.adminSidebar', function(){
     setContentHeight();
   });
 
@@ -157,7 +161,7 @@ var randNum = function() {
 
 // Panel toolbox
 $(document).ready(function() {
-  $('.collapse-link').on('click', function() {
+  $(document).off('click.adminPanel', '.collapse-link').on('click.adminPanel', '.collapse-link', function() {
     var $BOX_PANEL = $(this).closest('.x_panel');
     var $ICON = $(this).find('i');
     var $BOX_CONTENT = $BOX_PANEL.find('.x_content');
@@ -175,7 +179,7 @@ $(document).ready(function() {
     $ICON.toggleClass('fa-chevron-up fa-chevron-down');
   });
 
-  $('.close-link').click(function () {
+  $(document).off('click.adminPanelClose', '.close-link').on('click.adminPanelClose', '.close-link', function () {
     var $BOX_PANEL = $(this).closest('.x_panel');
 
     $BOX_PANEL.remove();
@@ -193,7 +197,7 @@ $(document).ready(function() {
 
 // Accordion
 $(document).ready(function() {
-  $(".expand").on("click", function () {
+  $(document).off('click.adminAccordion', '.expand').on('click.adminAccordion', '.expand', function () {
     $(this).next().slideToggle(200);
     $expand = $(this).find(">:first-child");
 
@@ -326,7 +330,7 @@ function init_compose() {
     console.log('init_compose');
   }
 
-  $('#compose, .compose-close').click(function(){
+  $(document).off('click.adminCompose', '#compose, .compose-close').on('click.adminCompose', '#compose, .compose-close', function(){
     $('.compose').slideToggle();
   });
 }
